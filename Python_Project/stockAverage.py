@@ -1,12 +1,13 @@
 import yfinance as yf
 import matplotlib.pyplot as plt
 import pandas as pd
+import matplotlib.dates as mdates
 
 #티커
 #AAPL, MSFT, GOOGL, AMZN, FB, TSLA, NVDA, PYPL, ADBE, INTC, CSCO, NFLX, CMCSA, PEP, COST, TMUS, AVGO, TXN, QCOM, AMAT
 
 # 티커(symbol) 설정
-ticker = "INTC"
+ticker = "MU"
 stock = yf.Ticker(ticker)
 
 # 2년치 주식 데이터 가져오기
@@ -51,4 +52,10 @@ ax2.set_ylabel('Volume')
 ax2.set_xlabel('Date')
 ax2.grid(True)
 
+# X축 날짜 형식 설정
+ax2.xaxis.set_major_locator(mdates.MonthLocator(interval=1))  # 1개월 간격으로 주요 눈금 설정
+ax2.xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m'))  # 날짜 형식 설정
+
+
+plt.xticks(rotation=45)  # X축 레이블 회전
 plt.show()

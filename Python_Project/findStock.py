@@ -2,7 +2,8 @@ import yfinance as yf
 import pandas as pd
 
 # 티커 목록 설정
-tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "PYPL", "ADBE", 
+tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "META",
+           "PYPL", "ADBE", 
            "INTC", "CSCO", "NFLX", "CMCSA", "PEP", "COST", "TMUS", "AVGO", 
            "TXN", "QCOM", "AMAT",
            "ASML", "TSM", "ARM", "SMCI", "MU", "QCOM", "NXPI", "AMD", "LRCX",
