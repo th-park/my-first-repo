@@ -28,7 +28,7 @@ print(auth_url)
 
 # 카카오 인증코드 발급 URL 접속 후 리다이렉트된 URL
 #https://accounts.kakao.com/login?continue=https%3A%2F%2Fkauth.kakao.com%2Foauth%2Fauthorize%3Fresponse_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Flocalhost%253A5000%26client_id%3Dd27a569424104e56816b6ed9f872abe2%26scope%3Dtalk_message%26through_account%3Dtrue
-url = "https://localhost:5000/?code=ImJ7IfjT6A_iA5xZnbPyKqVwbnmpmieAWWY7GjToYkqtErosGWgfDAAAAAQKKiVQAAABlT2B0rpUdd9ffL_GXA"
+url = "https://localhost:5000/?code=zNku847D_Xjf3GAc14WXwVJb6BgPiTq-bSI2YyfBDTgsJhBKcVMkAQAAAAQKPXNOAAABlUyfxoui-KZYUq23DA"
 
 #https://localhost:5000/?code=N3OigidpdKJo3-42B6UQ1gepMY_gIakyp49EGgo6x0k4qnhDNsK2XAAAAAQKKcleAAABlQeBl2-xu3fh8M0xkQ
 #https://localhost:5000/?code=pZD8rNjaL3W34DBYsCTEY49691qDPgr5fd8kPMSb4MvUELbGFNGdFAAAAAQKKiVTAAABlO_-v-_E017PSiBv1Q
