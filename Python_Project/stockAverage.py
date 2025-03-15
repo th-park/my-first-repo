@@ -7,7 +7,7 @@ import matplotlib.dates as mdates
 #AAPL, MSFT, GOOGL, AMZN, FB, TSLA, NVDA, PYPL, ADBE, INTC, CSCO, NFLX, CMCSA, PEP, COST, TMUS, AVGO, TXN, QCOM, AMAT
 
 # 티커(symbol) 설정
-ticker = "MU"
+ticker = input("분석할 종목의 티커(symbol)를 입력하세요 (예: AAPL, TSLA, MSFT): ").upper()
 stock = yf.Ticker(ticker)
 
 # 2년치 주식 데이터 가져오기
@@ -34,7 +34,7 @@ data['120_MA'] = data['Close'].rolling(window=120).mean()
 
 
 # 그래프 그리기
-fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(14, 10), sharex=True)
+fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(10, 6), sharex=True)
 
 # 주가와 이동 평균선 그래프
 ax1.plot(data.index, data['Close'], label='Close Price')
