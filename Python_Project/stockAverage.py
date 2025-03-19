@@ -2,12 +2,17 @@ import yfinance as yf
 import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib.dates as mdates
+import sys
 
 #티커
 #AAPL, MSFT, GOOGL, AMZN, FB, TSLA, NVDA, PYPL, ADBE, INTC, CSCO, NFLX, CMCSA, PEP, COST, TMUS, AVGO, TXN, QCOM, AMAT
 
 # 티커(symbol) 설정
-ticker = input("분석할 종목의 티커(symbol)를 입력하세요 (예: AAPL, TSLA, MSFT): ").upper()
+if len(sys.argv) > 1:
+    ticker = sys.argv[1]
+else:
+    ticker = input("분석할 종목의 티커(symbol)를 입력하세요 (예: AAPL, TSLA, MSFT): ").upper()
+
 stock = yf.Ticker(ticker)
 
 # 2년치 주식 데이터 가져오기

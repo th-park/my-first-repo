@@ -1,5 +1,6 @@
 import yfinance as yf
 import pandas as pd
+import subprocess
 
 # 티커 목록 설정
 tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "META", #M7
@@ -43,24 +44,29 @@ for ticker in tickers:
         avg_volume_20 = data['Volume'].rolling(window=20).mean().iloc[-1]
 
         # 현재 주가가 모든 이동 평균선 위에 있고 거래량이 증가했는지 확인
-        if (current_price > data['20_MA'].iloc[-1] and 
+        if (#current_volume > avg_volume_20 and
+            current_price > data['20_MA'].iloc[-1] and 
             current_price > data['50_MA'].iloc[-1] and 
-            current_price > data['120_MA'].iloc[-1] and 
-            data['20_MA'].iloc[-1] > data['50_MA'].iloc[-1] and
-            data['50_MA'].iloc[-1] > data['120_MA'].iloc[-1] and
-            current_volume > avg_volume_20):
+            current_price > data['120_MA'].iloc[-1] 
+            and data['20_MA'].iloc[-1] > data['50_MA'].iloc[-1] 
+            and data['50_MA'].iloc[-1] > data['120_MA'].iloc[-1] 
+            ):
             print(f"{ticker}: 현재 주가 {current_price} USD가 20일, 50일, 120일 이동 평균선 위에 있으며 거래량이 증가했습니다.")
-            
+            # stockAverage.py 파일 실행
+            subprocess.run(["python3", "Python_Project/stockAverage.py", ticker])
+            subprocess.run(["python3", "Python_Project/findStock_MACD.py", ticker])
+
            
         # 현재 주가가 모든 이동 평균선 아래에 있고 거래량이 증가했는지 확인
-        if (current_price < data['20_MA'].iloc[-1] and 
+        if (#current_volume > avg_volume_20 and
+            current_price < data['20_MA'].iloc[-1] and 
             current_price < data['50_MA'].iloc[-1] and 
-            current_price < data['120_MA'].iloc[-1] and 
-            data['20_MA'].iloc[-1] < data['50_MA'].iloc[-1] and
-            data['50_MA'].iloc[-1] < data['120_MA'].iloc[-1] and
-            current_volume > avg_volume_20):
+            current_price < data['120_MA'].iloc[-1] 
+            and data['20_MA'].iloc[-1] < data['50_MA'].iloc[-1]
+            and data['50_MA'].iloc[-1] < data['120_MA'].iloc[-1] 
+            ):
             print(f"{ticker}: 현재 주가 {current_price} USD가 20일, 50일, 120일 이동 평균선 아래에 있으며 거래량이 증가했습니다.")
-
+            subprocess.run(["python3", "Python_Project/findStock_MACD.py", ticker])
 
 
     except Exception as e:

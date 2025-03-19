@@ -2,9 +2,13 @@ import yfinance as yf
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+import sys
 
-# 사용자 입력으로 종목 선택
-ticker = input("분석할 종목의 티커(symbol)를 입력하세요 (예: AAPL): ").upper()
+# 티커(symbol) 설정
+if len(sys.argv) > 1:
+    ticker = sys.argv[1]
+else:
+    ticker = input("분석할 종목의 티커(symbol)를 입력하세요 (예: AAPL, TSLA, MSFT): ").upper()
 
 try:
     # 데이터 다운로드 (6개월)
