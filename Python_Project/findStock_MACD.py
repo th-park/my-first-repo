@@ -40,8 +40,8 @@ try:
         buy_dates = df[df["Buy_Signal"]].index
         sell_dates = df[df["Sell_Signal"]].index
 
-        print(f"📈 매수 신호 발생일: {list(buy_dates)}")
-        print(f"📉 매도 신호 발생일: {list(sell_dates)}")
+        #print(f"📈 매수 신호 발생일: {list(buy_dates)}")
+        #print(f"📉 매도 신호 발생일: {list(sell_dates)}")
 
         # 그래프 시각화
         plt.figure(figsize=(12,6))

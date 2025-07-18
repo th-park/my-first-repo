@@ -51,6 +51,14 @@ ax1.set_ylabel('Price (USD)')
 ax1.legend()
 ax1.grid(True)
 
+# 마지막 날의 Close 가격 표시
+last_date = data.index[-1]
+last_close = data['Close'].iloc[-1]
+ax1.annotate(f'{last_close:.2f}', xy=(last_date, last_close), xytext=(last_date, last_close + 10),
+             arrowprops=dict(facecolor='black', shrink=0.05),
+             horizontalalignment='right', verticalalignment='bottom')
+
+
 # 거래량 그래프
 ax2.bar(data.index, data['Volume'], color='gray')
 ax2.set_ylabel('Volume')

@@ -2,6 +2,9 @@ import yfinance as yf
 import pandas as pd
 import subprocess
 
+DispGraph = input("Would you like to display graphs? (Y/N)").upper()
+
+
 # 티커 목록 설정
 tickers = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "META", #M7
            "PYPL", "ADBE", 
@@ -53,8 +56,9 @@ for ticker in tickers:
             ):
             print(f"{ticker}: 현재 주가 {current_price} USD가 20일, 50일, 120일 이동 평균선 위에 있으며 거래량이 증가했습니다.")
             # stockAverage.py 파일 실행
-            subprocess.run(["python3", "Python_Project/stockAverage.py", ticker])
-            subprocess.run(["python3", "Python_Project/findStock_MACD.py", ticker])
+            if (DispGraph == "Y"):
+                subprocess.run(["python3", "Python_Project/stockAverage.py", ticker])
+                subprocess.run(["python3", "Python_Project/findStock_MACD.py", ticker])
 
            
         # 현재 주가가 모든 이동 평균선 아래에 있고 거래량이 증가했는지 확인
@@ -66,7 +70,9 @@ for ticker in tickers:
             and data['50_MA'].iloc[-1] < data['120_MA'].iloc[-1] 
             ):
             print(f"{ticker}: 현재 주가 {current_price} USD가 20일, 50일, 120일 이동 평균선 아래에 있으며 거래량이 증가했습니다.")
-            subprocess.run(["python3", "Python_Project/findStock_MACD.py", ticker])
+            if (DispGraph == "Y"):
+                subprocess.run(["python3", "Python_Project/stockAverage.py", ticker])
+                subprocess.run(["python3", "Python_Project/findStock_MACD.py", ticker])
 
 
     except Exception as e:
